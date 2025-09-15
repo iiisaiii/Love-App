@@ -9,11 +9,13 @@ export default function DateIdeasPage() {
   const [ideas, setIdeas] = useState<any[]>([]);
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-4">Date Ideas</h1>
-      <div className="grid gap-3 rounded-2xl border p-4">
+    <section className="py-10">
+      <h1 className="h2">Date Ideas</h1>
+      <p className="text-rose-900/70 mt-1">Vibe, ortam ve bütçeyi seç; keyifli fikirler gelsin.</p>
+
+      <div className="card mt-4 p-5 grid gap-3">
         <div className="grid gap-1">
-          <span>Vibe</span>
+          <span className="text-sm font-medium">Vibe</span>
           <select value={vibe} onChange={(e)=>setVibe(e.target.value)} className="border rounded-xl p-2">
             <option value="cozy">Sakin & Cozy</option>
             <option value="adventurous">Macera</option>
@@ -21,31 +23,34 @@ export default function DateIdeasPage() {
           </select>
         </div>
         <div className="grid gap-1">
-          <span>Ortam</span>
+          <span className="text-sm font-medium">Ortam</span>
           <select value={setting} onChange={(e)=>setSetting(e.target.value)} className="border rounded-xl p-2">
             <option value="indoor">İç Mekan</option>
             <option value="outdoor">Dış Mekan</option>
           </select>
         </div>
         <div className="grid gap-1">
-          <span>Bütçe</span>
+          <span className="text-sm font-medium">Bütçe</span>
           <select value={budget} onChange={(e)=>setBudget(e.target.value)} className="border rounded-xl p-2">
             <option value="low">Düşük</option>
             <option value="mid">Orta</option>
             <option value="high">Yüksek</option>
           </select>
         </div>
-        <button onClick={()=>setIdeas(getDateIdeas({vibe, setting, budget}))} className="mt-2 px-4 py-2 rounded-2xl border w-fit">Fikir Üret</button>
+        <div className="flex gap-3">
+          <button onClick={()=>setIdeas(getDateIdeas({vibe, setting, budget}))} className="btn">Fikir Üret</button>
+          <a href="/" className="btn-ghost">Anasayfa</a>
+        </div>
       </div>
 
       <ul className="mt-6 grid gap-3">
         {ideas.map((it, i)=> (
-          <li key={i} className="border rounded-2xl p-4">
+          <li key={i} className="card p-4">
             <div className="font-medium">{it.title}</div>
-            <div className="text-sm text-gray-600">{it.desc}</div>
+            <div className="text-sm text-rose-900/70">{it.desc}</div>
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 }
