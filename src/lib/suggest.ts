@@ -3,12 +3,15 @@ export function getGiftSuggestions({ occasion, budget, interests }:{
 }){
   const tags = interests.toLowerCase();
   return [
-    { id:'bk1', title:'Minimalist Journal', price:'₺249', tag:'cozy, books',
-      url:'/go/aff/journal', merchant:'Hepsiburada', image:'/products/journal.jpg' },
-    { id:'bk2', title:'Couple Card Game', price:'₺399', tag:'games, conversation',
-      url:'/go/aff/cards', merchant:'Trendyol', image:'/products/cards.jpg' },
-    { id:'bk3', title:'Scented Candle Set', price:'₺329', tag:'home, cozy',
-      url:'/go/aff/candles', merchant:'Amazon', image:'/products/candles.jpg' },
+    { id:'bk1', title:'Minimalist Journal', price:'₺249',
+      tag:'cozy, books', url:'/go/aff/journal', merchant:'Hepsiburada',
+      image:'/products/journal.jpg' },
+    { id:'bk2', title:'Couple Card Game', price:'₺399',
+      tag:'games, conversation', url:'/go/aff/cards', merchant:'Trendyol',
+      image:'/products/cards.jpg' },
+    { id:'bk3', title:'Scented Candle Set', price:'₺329',
+      tag:'home, cozy', url:'/go/aff/candles', merchant:'Amazon',
+      image:'/products/candles.jpg' },
   ].filter(x => tags.split(',').some(t => x.tag.includes(t.trim())) || true);
 }
 
