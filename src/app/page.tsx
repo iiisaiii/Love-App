@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { EmailCapture } from '@/components/email-capture';
+import { TopPicks } from "@/components/top-picks";
+import { VibeCarousel } from "@/components/vibe-carousel";
+
 
 export default function HomePage() {
   return (
@@ -40,6 +43,10 @@ export default function HomePage() {
           </div>
         ))}
       </section>
+
+      <TopPicks />
+      <VibeCarousel />
+
 
       {/* ARAÇLAR TEASER */}
       <section className="mt-12 grid gap-6 md:grid-cols-3">
