@@ -2,32 +2,58 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 py-16">
-      <section className="text-center space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Love App</h1>
-        <p className="text-lg text-gray-600">
-          Kısa bir mini test → hediye önerileri, randevu fikirleri ve kişiye özel ipuçları.
-        </p>
-        <div className="flex items-center justify-center gap-3 pt-4">
-          <Link href="/tools/gift-finder" className="px-5 py-3 rounded-2xl border hover:shadow">Gift Finder</Link>
-          <Link href="/tools/date-ideas" className="px-5 py-3 rounded-2xl border hover:shadow">Date Ideas</Link>
-          <Link href="/tools/love-languages" className="px-5 py-3 rounded-2xl border hover:shadow">Love Languages</Link>
+    <>
+      {/* HERO */}
+      <section className="py-16 md:py-24 text-center">
+        <div className="mx-auto max-w-3xl">
+          <h1 className="h1">Küçük testler, büyük gülümsemeler.</h1>
+          <p className="lead mt-4">
+            Partnerine özel hediye önerileri ve date fikirleri. Basit, sıcak, abartısız.
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <Link href="/tools/gift-finder" className="btn">Gift Finder’ı başlat</Link>
+            <Link href="/tools/date-ideas" className="btn-ghost">Date Fikirleri</Link>
+          </div>
+          <div className="mt-4">
+            <span className="badge">Ücretsiz • Hızlı • Reklamsız</span>
+          </div>
         </div>
       </section>
 
-      <section className="mt-16 grid md:grid-cols-3 gap-6">
-        {['Top Picks', 'Yeni Fikirler', 'Bütçe Dostu'].map((title) => (
-          <div key={title} className="rounded-2xl border p-5">
-            <h3 className="font-semibold mb-2">{title}</h3>
-            <p className="text-sm text-gray-600">Roz ismini belirleyene kadar placeholder öneriler.</p>
+      {/* ÖZELLİKLER */}
+      <section className="grid gap-6 md:grid-cols-3">
+        {[
+          { t:'Kişisel öneriler', d:'İlgi alanı ve bütçeye uygun hediye kartları.' },
+          { t:'Date kütüphanesi', d:'Hava, bütçe ve “vibe”a göre fikir üret.' },
+          { t:'Love languages', d:'Mini testle tatlı ipuçları ve jest fikirleri.' },
+        ].map((f, i)=>(
+          <div key={i} className="card p-6">
+            <div className="text-2xl">💗</div>
+            <div className="mt-2 font-semibold text-rose-900">{f.t}</div>
+            <div className="mt-1 text-sm text-rose-900/70">{f.d}</div>
           </div>
         ))}
       </section>
 
-      <footer className="mt-16 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} Love App. Basit, hızlı, faydalı.</p>
-        <p className="mt-1">Gizlilik • Şartlar • <a className="underline" href="/affiliates">Affiliate Açıklaması</a></p>
-      </footer>
-    </main>
+      {/* ARAÇLAR TEASER */}
+      <section className="mt-12 grid gap-6 md:grid-cols-3">
+        <ToolCard href="/tools/gift-finder" title="Gift Finder" desc="Occasion + bütçe + ilgi alanı → öneriler" />
+        <ToolCard href="/tools/date-ideas" title="Date Ideas" desc="Vibe + iç/dış mekan + bütçe → fikirler" />
+        <ToolCard href="/tools/love-languages" title="Love Languages" desc="Mini test sonucu → jest/ürün önerileri" />
+      </section>
+    </>
+  );
+}
+
+function ToolCard({href, title, desc}:{href:string; title:string; desc:string}) {
+  return (
+    <Link href={href} className="card p-6 block hover:shadow-md transition">
+      <div className="text-3xl">❤️</div>
+      <div className="mt-2 text-lg font-semibold">{title}</div>
+      <div className="text-sm text-rose-900/70">{desc}</div>
+      <div className="mt-4 inline-flex items-center gap-1 text-rose-700 font-medium">
+        Aç <span aria-hidden>→</span>
+      </div>
+    </Link>
   );
 }
