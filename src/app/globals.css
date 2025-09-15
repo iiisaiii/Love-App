@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Genel tema */
 :root {
-  --bg: #ffffff;
-  --fg: #111827;
+  --card: #ffffff;
+  --ink: #4a044e;       /* koyu gül */
+  --muted: #7f1d1d;     /* kırmızımsı kahve */
+  --ring: #fb7185;      /* rose-400 */
 }
-html, body { background: var(--bg); color: var(--fg); }
+
+html, body { color: var(--ink); }
 a { text-underline-offset: 2px; }
+
+/* Kart stili */
+.card {
+  @apply rounded-2xl bg-white/80 backdrop-blur border border-rose-100 shadow-sm;
+}
+.btn {
+  @apply inline-flex items-center justify-center px-5 py-3 rounded-2xl font-medium border bg-rose-600 text-white hover:bg-rose-500 transition;
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl font-medium border border-rose-200 text-rose-700 hover:bg-rose-50;
+}
+.badge {
+  @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-800 border border-rose-200;
+}
+.h1 { @apply text-4xl md:text-5xl font-bold tracking-tight; }
+.h2 { @apply text-2xl md:text-3xl font-semibold; }
+.lead { @apply text-lg text-rose-900/70; }
