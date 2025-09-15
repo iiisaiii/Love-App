@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { EmailCapture } from '@/components/email-capture';
 
 export default function HomePage() {
   return (
@@ -19,6 +20,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+      <section className="mt-12">
+        <EmailCapture title="Haftalık 3 Date Fikri" />
+      </section>
+
 
       {/* ÖZELLİKLER */}
       <section className="grid gap-6 md:grid-cols-3">
